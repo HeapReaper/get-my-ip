@@ -1,13 +1,22 @@
 {
-    "private": true,
-    "type": "module",
-    "scripts": {
-        "dev": "vite",
-        "build": "vite build"
-    },
-    "devDependencies": {
-        "axios": "^1.6.4",
-        "laravel-vite-plugin": "^1.0",
-        "vite": "^5.0"
-    }
+  "name": "get-my-ip",
+  "version": "1.0.0",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/index.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.2.17"
+  },
+  "private": true,
+  "peerDependencies": {
+    "typescript": "^5"
+  }
 }
