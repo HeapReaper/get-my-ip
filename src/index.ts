@@ -1,13 +1,14 @@
 console.debug('Starting...');
 
 Bun.serve({
+    routes: undefined,
     port: 3132,
     async fetch(request, server) {
         console.log('I got requested...');
 
-        const address = server.requestIP(request)
-
-        const ip: string = address ? address.address : 'Oops, i did an poo poo in ma pants!';
+        const forwarded = request.headers.get('x-forwarded-for');
+        // @ts-ignore
+        const ip = forwarded?.split(',')[0].trim() ?? server.requestIP(request)?.address ?? 'Unknown';
 
         let html: string = await Bun.file('src/index.html').text();
         html = html.replace('{{IP}}', ip)
@@ -17,5 +18,5 @@ Bun.serve({
                 'content-type': 'text/html',
             }
         });
-    },
+    }
 });
